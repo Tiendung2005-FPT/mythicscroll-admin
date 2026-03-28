@@ -22,8 +22,12 @@ const ChapterManager = () => {
         try {
             const m = await getMangaById(id);
             const c = await getChapters(id);
+            
+            // Sort chapters descendingly by chapter number
+            const sorted = [...c].sort((a, b) => b.chapterNumber - a.chapterNumber);
+            
             setManga(m);
-            setChapters(c);
+            setChapters(sorted);
             setFormData(prev => ({ ...prev, chapterNumber: (c.length > 0 ? Math.max(...c.map(ch => ch.chapterNumber)) + 1 : 1) }));
         } catch (err) { console.error(err); }
     };
@@ -45,6 +49,18 @@ const ChapterManager = () => {
 
     const handleSave = async (e) => {
         e.preventDefault();
+
+        // Check for duplicate chapter number
+        const isDuplicate = chapters.some(ch => 
+            ch.chapterNumber === formData.chapterNumber && 
+            (!editingChapter || ch._id !== editingChapter._id)
+        );
+
+        if (isDuplicate) {
+            alert(`Chapter ${formData.chapterNumber} already exists for this manga. Please use a unique number.`);
+            return;
+        }
+
         setIsSaving(true);
         try {
             if (editingChapter) {
