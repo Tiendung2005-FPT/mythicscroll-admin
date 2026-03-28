@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { getManga, getGenres } from '../api.js';
 import { motion } from 'framer-motion';
 import { BookOpen, UserCheck, TrendingUp, Tags } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [data, setData] = useState({ mangaCount: 0, genreCount: 0, loading: true });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +24,6 @@ const Dashboard = () => {
   const stats = [
     { label: 'Total Manga', value: data.mangaCount, icon: <BookOpen />, color: '#d4af37' },
     { label: 'Active Genres', value: data.genreCount, icon: <Tags />, color: '#b8860b' },
-    { label: 'Avg Rating', value: '4.8', icon: <TrendingUp />, color: '#ffd700' },
-    { label: 'Total Users', value: '128', icon: <UserCheck />, color: '#d4af37' },
   ];
 
   if (data.loading) return (
@@ -75,14 +75,11 @@ const Dashboard = () => {
         <div className="glass" style={{ padding: '2rem', minHeight: '300px' }}>
           <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Quick Actions</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <motion.button whileTap={{ scale: 0.95 }} style={{ border: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px', borderRadius: '8px', background: 'transparent', color: 'var(--text-main)', textAlign: 'left' }}>
+            <motion.button onClick={() => navigate("/manga/new")} whileTap={{ scale: 0.95 }} style={{ border: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px', borderRadius: '8px', background: 'transparent', color: 'var(--text-main)', textAlign: 'left' }}>
               ✦ Add New Manga
             </motion.button>
-            <motion.button whileTap={{ scale: 0.95 }} style={{ border: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px', borderRadius: '8px', background: 'transparent', color: 'var(--text-main)', textAlign: 'left' }}>
+            <motion.button onClick={() => navigate("/genres")} whileTap={{ scale: 0.95 }} style={{ border: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px', borderRadius: '8px', background: 'transparent', color: 'var(--text-main)', textAlign: 'left' }}>
               ✦ New Genre Entry
-            </motion.button>
-            <motion.button whileTap={{ scale: 0.95 }} style={{ border: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px', borderRadius: '8px', background: 'transparent', color: 'var(--text-main)', textAlign: 'left' }}>
-              ✦ System Status
             </motion.button>
           </div>
         </div>
