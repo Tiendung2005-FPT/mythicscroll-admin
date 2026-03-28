@@ -71,7 +71,7 @@ const GenreManagement = () => {
                     <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         <input
                             type="text"
-                            placeholder="Genre Name (e.g. Fantasy)..."
+                            placeholder="Genre Name"
                             value={newGenre}
                             onChange={(e) => setNewGenre(e.target.value)}
                         />

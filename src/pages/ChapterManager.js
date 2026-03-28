@@ -22,10 +22,9 @@ const ChapterManager = () => {
         try {
             const m = await getMangaById(id);
             const c = await getChapters(id);
-            
-            // Sort chapters descendingly by chapter number
+
             const sorted = [...c].sort((a, b) => b.chapterNumber - a.chapterNumber);
-            
+
             setManga(m);
             setChapters(sorted);
             setFormData(prev => ({ ...prev, chapterNumber: (c.length > 0 ? Math.max(...c.map(ch => ch.chapterNumber)) + 1 : 1) }));
@@ -50,9 +49,8 @@ const ChapterManager = () => {
     const handleSave = async (e) => {
         e.preventDefault();
 
-        // Check for duplicate chapter number
-        const isDuplicate = chapters.some(ch => 
-            ch.chapterNumber === formData.chapterNumber && 
+        const isDuplicate = chapters.some(ch =>
+            ch.chapterNumber === formData.chapterNumber &&
             (!editingChapter || ch._id !== editingChapter._id)
         );
 
