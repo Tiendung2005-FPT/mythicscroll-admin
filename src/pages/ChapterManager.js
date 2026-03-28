@@ -219,7 +219,7 @@ const ChapterManager = () => {
                                 <button
                                     type="button"
                                     onClick={handleCancel}
-                                    style={{ flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent' }}
+                                    style={{ flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: "white" }}
                                 >
                                     Cancel
                                 </button>
