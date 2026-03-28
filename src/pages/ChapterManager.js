@@ -77,7 +77,7 @@ const ChapterManager = () => {
         setFormData({
             chapterNumber: chapter.chapterNumber,
             title: chapter.title,
-            pages: chapter.pages,
+            pages: chapter.pages || [],
             isDisplayed: chapter.isDisplayed
         });
     };
@@ -138,7 +138,7 @@ const ChapterManager = () => {
                                     </div>
                                     <div>
                                         <div style={{ fontWeight: 600 }}>{ch.title}</div>
-                                        <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>{ch.pages.length} Pages • {ch.isDisplayed ? 'Visible' : 'Hidden'}</div>
+                                        <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>{ch.pages?.length || 0} Pages • {ch.isDisplayed ? 'Visible' : 'Hidden'}</div>
                                     </div>
                                 </div>
                                 <button
@@ -182,7 +182,7 @@ const ChapterManager = () => {
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Chapter Pages ({formData.pages.length})</label>
+                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Chapter Pages ({formData.pages?.length || 0})</label>
                                 <label style={{ fontSize: '0.8rem', color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                     <Plus size={16} /> <span>Upload Pages</span>
                                     <input type="file" multiple hidden onChange={handleUploadPages} disabled={isUploading} />
