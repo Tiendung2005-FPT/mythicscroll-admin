@@ -88,7 +88,7 @@ const LoginPage = ({ onLogin }) => {
           <h1 style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '0.5rem' }} className="mythic-glow">
             Admin Portal
           </h1>
-          <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>Enter thy scrolls and proceed.</p>
+          <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>Please login to continue.</p>
         </div>
 
         {error && (
@@ -104,7 +104,7 @@ const LoginPage = ({ onLogin }) => {
               <User size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--primary)' }} />
               <input
                 type="email"
-                placeholder="Name your identity..."
+                placeholder="Enter your email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ width: '100%', paddingLeft: '40px' }}
@@ -119,7 +119,7 @@ const LoginPage = ({ onLogin }) => {
               <Lock size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--primary)' }} />
               <input
                 type="password"
-                placeholder="The secret sign..."
+                placeholder="Enter your password..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ width: '100%', paddingLeft: '40px' }}
@@ -145,7 +145,7 @@ const LoginPage = ({ onLogin }) => {
               gap: '10px'
             }}
           >
-            {isLoading ? 'Verifying...' : 'Summon Dashboard'}
+            {isLoading ? 'Verifying...' : 'Login to Dashboard'}
             <ArrowRight size={18} />
           </button>
         </form>

@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   if (data.loading) return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-      <p style={{ color: 'var(--primary)', fontStyle: 'italic' }}>Gazing into the void...</p>
+      <p style={{ color: 'var(--primary)', fontStyle: 'italic' }}>Loading data...</p>
     </div>
   );
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
       <header style={{ marginBottom: '2.5rem' }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Overview</h1>
-        <p style={{ color: 'var(--text-dim)' }}>Behold the state of thy mythic scrolls.</p>
+        <p style={{ color: 'var(--text-dim)' }}>Overview of the platform's status.</p>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
@@ -69,7 +69,7 @@ const Dashboard = () => {
         <div className="glass" style={{ padding: '2rem', minHeight: '300px' }}>
           <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Recent Performance</h2>
           <div style={{ opacity: 0.5, textAlign: 'center', paddingTop: '4rem' }}>
-            <p style={{ color: 'var(--text-dim)' }}>Chart of destiny is still being written...</p>
+            <p style={{ color: 'var(--text-dim)' }}>Activity data will appear here.</p>
           </div>
         </div>
         <div className="glass" style={{ padding: '2rem', minHeight: '300px' }}>

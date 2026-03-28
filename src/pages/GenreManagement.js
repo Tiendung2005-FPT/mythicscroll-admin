@@ -61,8 +61,8 @@ const GenreManagement = () => {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <header style={{ marginBottom: '2.5rem' }}>
-                <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Genre Sanctum</h1>
-                <p style={{ color: 'var(--text-dim)' }}>Managing the categories of fate.</p>
+                <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Genre Management</h1>
+                <p style={{ color: 'var(--text-dim)' }}>Manage and organize manga categories.</p>
             </header>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '3rem' }}>
@@ -97,7 +97,7 @@ const GenreManagement = () => {
 
                 <div className="glass" style={{ padding: '2rem' }}>
                     <h2 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <Tags size={20} /> Registered Genres
+                        <Tags size={20} /> Current Genres
                     </h2>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
                         {loading ? (

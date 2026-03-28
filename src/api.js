@@ -77,16 +77,12 @@ export const updateChapter = async (id, chapterData) => {
 };
 
 export const uploadSingleFile = async (formData) => {
-  const { data } = await api.post('/upload/single', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  const { data } = await api.post('/upload/single', formData);
   return data;
 };
 
 export const uploadMultipleFiles = async (formData) => {
-  const { data } = await api.post('/upload/multiple', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  const { data } = await api.post('/upload/multiple', formData);
   return data;
 };
 

@@ -35,7 +35,7 @@ const MangaList = () => {
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem' }}>
         <div>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Manga Management</h1>
-          <p style={{ color: 'var(--text-dim)' }}>Behold the collection of thy mythic scrolls.</p>
+          <p style={{ color: 'var(--text-dim)' }}>Manage and organize your manga collection.</p>
         </div>
         <button
           onClick={() => navigate('/manga/new')}
@@ -52,7 +52,7 @@ const MangaList = () => {
             boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)'
           }}
         >
-          <Plus size={20} /> New Scroll
+          <Plus size={20} /> Add Manga
         </button>
       </header>
 
@@ -73,7 +73,7 @@ const MangaList = () => {
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead style={{ background: 'rgba(212, 175, 55, 0.1)' }}>
             <tr>
-              <th style={{ padding: '16px 24px', color: 'var(--primary)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 600 }}>Scroll</th>
+              <th style={{ padding: '16px 24px', color: 'var(--primary)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 600 }}>Cover</th>
               <th style={{ padding: '16px 24px', color: 'var(--primary)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 600 }}>Title</th>
               <th style={{ padding: '16px 24px', color: 'var(--primary)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 600 }}>Status</th>
               <th style={{ padding: '16px 24px', color: 'var(--primary)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 600 }}>Year</th>
@@ -83,9 +83,9 @@ const MangaList = () => {
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan="6" style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}>Gazing into the void...</td></tr>
+              <tr><td colSpan="6" style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}>Loading data...</td></tr>
             ) : filteredManga.length === 0 ? (
-              <tr><td colSpan="6" style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}>No scrolls found in thy sanctuary.</td></tr>
+              <tr><td colSpan="6" style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}>No entries found.</td></tr>
             ) : filteredManga.map((item) => (
               <motion.tr
                 key={item._id}

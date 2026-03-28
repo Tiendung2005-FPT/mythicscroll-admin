@@ -90,8 +90,8 @@ const ChapterManager = () => {
                     <ArrowLeft size={20} />
                 </button>
                 <div>
-                    <h1 style={{ fontSize: '2rem' }}>Chapter Archives</h1>
-                    <p style={{ color: 'var(--text-dim)' }}>Managing scrolls for: <span style={{ color: 'var(--primary)' }}>{manga?.title || 'Loading...'}</span></p>
+                    <h1 style={{ fontSize: '2rem' }}>Chapter Management</h1>
+                    <p style={{ color: 'var(--text-dim)' }}>Managing chapters for: <span style={{ color: 'var(--primary)' }}>{manga?.title || 'Loading...'}</span></p>
                 </div>
             </header>
 
@@ -99,11 +99,11 @@ const ChapterManager = () => {
                 {/* Chapter List */}
                 <div className="glass" style={{ padding: '2rem', background: 'rgba(255, 255, 255, 0.02)' }}>
                     <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <ImageIcon size={20} /> Recorded Chapters
+                        <ImageIcon size={20} /> Chapter List
                     </h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         {chapters.length === 0 ? (
-                            <p style={{ color: 'var(--text-dim)', textAlign: 'center', padding: '3rem' }}>No chapters recorded yet.</p>
+                            <p style={{ color: 'var(--text-dim)', textAlign: 'center', padding: '3rem' }}>No chapters added yet.</p>
                         ) : chapters.map(ch => (
                             <div
                                 key={ch._id}
@@ -131,7 +131,7 @@ const ChapterManager = () => {
                                     onClick={() => handleEdit(ch)}
                                     style={{ padding: '8px 12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-dim)', borderRadius: '8px' }}
                                 >
-                                    Refine
+                                    Edit
                                 </button>
                             </div>
                         ))}
@@ -141,13 +141,13 @@ const ChapterManager = () => {
                 {/* Chapter Editor / Add */}
                 <div className="glass" style={{ padding: '2rem', height: 'fit-content', position: 'sticky', top: '2rem' }}>
                     <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        {editingChapter ? '🔨 Refine Archive' : '✨ New Archive Entry'}
+                        {editingChapter ? '🔨 Edit Chapter' : '✨ Add New Chapter'}
                     </h2>
 
                     <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Ordinal ID</label>
+                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Chapter Number</label>
                                 <input
                                     type="number"
                                     value={formData.chapterNumber}
@@ -155,7 +155,7 @@ const ChapterManager = () => {
                                 />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Scroll Title</label>
+                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Chapter Title</label>
                                 <input
                                     type="text"
                                     placeholder="Chapter Name..."
@@ -168,9 +168,9 @@ const ChapterManager = () => {
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Sacred Pages ({formData.pages.length})</label>
+                                <label style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Chapter Pages ({formData.pages.length})</label>
                                 <label style={{ fontSize: '0.8rem', color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                    <Plus size={16} /> <span>Cast More Pages</span>
+                                    <Plus size={16} /> <span>Upload Pages</span>
                                     <input type="file" multiple hidden onChange={handleUploadPages} disabled={isUploading} />
                                 </label>
                             </div>
@@ -186,8 +186,8 @@ const ChapterManager = () => {
                                 borderRadius: '12px',
                                 minHeight: '100px'
                             }}>
-                                {isUploading && <div style={{ gridColumn: 'span 3', textAlign: 'center', padding: '1rem', color: 'var(--primary)' }}>Chanting upload incantations...</div>}
-                                {formData.pages.length === 0 && !isUploading && <div style={{ gridColumn: 'span 3', textAlign: 'center', padding: '1rem', color: 'var(--text-dim)', fontSize: '0.8rem' }}>The archive is empty.</div>}
+                                {isUploading && <div style={{ gridColumn: 'span 3', textAlign: 'center', padding: '1rem', color: 'var(--primary)' }}>Uploading images...</div>}
+                                {formData.pages.length === 0 && !isUploading && <div style={{ gridColumn: 'span 3', textAlign: 'center', padding: '1rem', color: 'var(--text-dim)', fontSize: '0.8rem' }}>No pages uploaded yet.</div>}
                                 {formData.pages.map((url, idx) => (
                                     <div key={idx} style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden', aspectRatio: '2/3', border: '1px solid rgba(255,255,255,0.05)' }}>
                                         <img src={url} alt={`page ${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -211,7 +211,7 @@ const ChapterManager = () => {
                                 checked={formData.isDisplayed}
                                 onChange={(e) => setFormData({ ...formData, isDisplayed: e.target.checked })}
                             />
-                            <label htmlFor="chapVisible" style={{ fontSize: '0.8rem' }}>Visible in Sanctuary</label>
+                            <label htmlFor="chapVisible" style={{ fontSize: '0.8rem' }}>Visible to Users</label>
                         </div>
 
                         <div style={{ display: 'flex', gap: '1rem' }}>
@@ -241,7 +241,7 @@ const ChapterManager = () => {
                                     gap: '8px'
                                 }}
                             >
-                                <Save size={18} /> {isSaving ? 'Inscribing...' : (editingChapter ? 'Update Archive' : 'Finalize Archive')}
+                                <Save size={18} /> {isSaving ? 'Saving...' : (editingChapter ? 'Update Chapter' : 'Create Chapter')}
                             </button>
                         </div>
                     </form>

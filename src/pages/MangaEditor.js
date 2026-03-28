@@ -80,8 +80,8 @@ const MangaEditor = () => {
           <ArrowLeft size={20} />
         </button>
         <div>
-          <h1 style={{ fontSize: '2rem' }}>{id ? 'Refine Scroll' : 'Summon New Scroll'}</h1>
-          <p style={{ color: 'var(--text-dim)' }}>{id ? `Editing sacred text for: ${formData.title}` : 'Creating a new mythic record.'}</p>
+          <h1 style={{ fontSize: '2rem' }}>{id ? 'Edit Manga' : 'Add New Manga'}</h1>
+          <p style={{ color: 'var(--text-dim)' }}>{id ? `Editing details for: ${formData.title}` : 'Create a new manga entry.'}</p>
         </div>
       </header>
 
@@ -116,7 +116,7 @@ const MangaEditor = () => {
               ) : (
                 <label style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <Upload size={32} style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>Cast Thy Cover Here</span>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>Upload Cover Image</span>
                   <input type="file" hidden onChange={handleFileChange} />
                 </label>
               )}
@@ -153,10 +153,10 @@ const MangaEditor = () => {
           <div className="glass" style={{ padding: '2.5rem' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Scroll Title</label>
+                <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Manga Title</label>
                 <input
                   type="text"
-                  placeholder="Legendary Name..."
+                  placeholder="Enter title..."
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
@@ -166,8 +166,8 @@ const MangaEditor = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Current Status</label>
                 <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })}>
-                  <option value="ongoing">🔱 Ongoing</option>
-                  <option value="completed">📜 Completed</option>
+                  <option value="ongoing">Ongoing</option>
+                  <option value="completed">Completed</option>
                 </select>
               </div>
 
@@ -181,10 +181,10 @@ const MangaEditor = () => {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Chronicle Description</label>
+                <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Description</label>
                 <textarea
                   rows={6}
-                  placeholder="Record history here..."
+                  placeholder="Enter description..."
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   required
@@ -200,7 +200,7 @@ const MangaEditor = () => {
                   onChange={(e) => setFormData({ ...formData, isDisplayed: e.target.checked })}
                   style={{ width: '18px', height: '18px', cursor: 'pointer' }}
                 />
-                <label htmlFor="isVisible" style={{ fontSize: '0.9rem', cursor: 'pointer' }}>Visible to Pilgrims</label>
+                <label htmlFor="isVisible" style={{ fontSize: '0.9rem', cursor: 'pointer' }}>Visible to Public</label>
               </div>
             </div>
 
@@ -227,7 +227,7 @@ const MangaEditor = () => {
                   boxShadow: '0 5px 15px rgba(212, 175, 55, 0.3)'
                 }}
               >
-                <Save size={18} /> {loading ? 'Binding...' : 'Inscribe Record'}
+                <Save size={18} /> {loading ? 'Loading...' : 'Save Changes'}
               </button>
             </div>
           </div>
